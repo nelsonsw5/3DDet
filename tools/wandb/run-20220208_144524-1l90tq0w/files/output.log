@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "train.py", line 249, in <module>
+    main()
+  File "train.py", line 157, in main
+    viz_multiview(id, run1)
+  File "/home/stephen/Documents/3DDet/tools/vizualize_first_batch.py", line 36, in viz_multiview
+    label_path = json_map[str(int(id))]["24k_frustum_label"]
+KeyError: '356'
+Traceback (most recent call last):
+  File "train.py", line 249, in <module>
+    main()
+  File "train.py", line 157, in main
+    viz_multiview(id, run1)
+  File "/home/stephen/Documents/3DDet/tools/vizualize_first_batch.py", line 36, in viz_multiview
+    label_path = json_map[str(int(id))]["24k_frustum_label"]
+KeyError: '356'

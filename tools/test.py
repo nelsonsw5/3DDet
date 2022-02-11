@@ -209,7 +209,7 @@ def main():
     viz(test_set, id, run)
     run.finish()
 
-    #### Vizualize Ground Truth from Multiview
+    ### Vizualize Ground Truth from Multiview
     # run1 = WandB(
     #     project='objdet_GT_Viz',
     #     enabled=True,

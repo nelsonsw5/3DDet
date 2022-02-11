@@ -4,7 +4,7 @@ import numpy as np
 import tqdm
 import numpy as np
 
-cloud = '/multiview/3d-count/obj_detection/normalized_data/training/velodyne/'
+cloud = '/multiview/3d-count/obj_detection/normalized_data/testing/velodyne/'
 x = []
 y = []
 z = []

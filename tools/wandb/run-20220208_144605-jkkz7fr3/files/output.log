@@ -1,0 +1,4 @@
+[[0.59 0.22 0.22]
+ [0.59 0.22 0.22]]
+> /home/stephen/Documents/3DDet/tools/train.py(160)main()
+-> model = build_network(model_cfg=cfg.MODEL, num_class=len(cfg.CLASS_NAMES), dataset=train_set)

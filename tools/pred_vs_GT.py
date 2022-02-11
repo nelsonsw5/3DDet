@@ -31,14 +31,14 @@ for scene in x:
         ### VIZUALIZE Pred
         viz(centroids, dims, labels, id)
 
-        ### VIZUALIZE Ground Truth Version
-        run = WandB(
-            project='3DDet_Viz',
-            enabled=True,
-            log_objects=True,
-            name='GT Test Viz: ' + id
-        )
-        viz_multiview(id, run)
-        count = count + 1
-        pdb.set_trace()
-        run.finish()
+        # ### VIZUALIZE Ground Truth Version
+        # run = WandB(
+        #     project='3DDet_Viz',
+        #     enabled=True,
+        #     log_objects=True,
+        #     name='GT Test Viz: ' + id
+        # )
+        # viz_multiview(id, run)
+        # count = count + 1
+        # pdb.set_trace()
+        # run.finish()

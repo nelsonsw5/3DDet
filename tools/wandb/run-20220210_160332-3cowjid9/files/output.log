@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "kitti_viz_test.py", line 28, in <module>
+    boxes = bbobj.computeBox3D()
+  File "/home/stephen/Documents/3DDet/tools/bound_box.py", line 160, in computeBox3D
+    x_corners += -l/2
+TypeError: 'float' object is not iterable

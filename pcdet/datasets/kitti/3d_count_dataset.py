@@ -213,6 +213,7 @@ class KittiDataset(DatasetTemplate):
                 
 
                 if count_inside_pts:
+                    # pdb.set_trace()
                     points = self.get_lidar(sample_idx)
                     calib = self.get_calib(sample_idx)
                     pts_rect = calib.lidar_to_rect(points[:, 0:3])

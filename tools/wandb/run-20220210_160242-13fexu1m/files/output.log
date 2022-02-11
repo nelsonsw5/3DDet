@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "kitti_viz_test.py", line 28, in <module>
+    boxes = bbobj.computeBox3D()
+  File "/home/stephen/Documents/3DDet/tools/bound_box.py", line 150, in computeBox3D
+    R = np.array([ [+cos(ry), 0, +sin(ry)],
+TypeError: must be real number, not str

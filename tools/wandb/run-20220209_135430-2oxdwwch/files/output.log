@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "sample_viz.py", line 28, in <module>
+    f = open(json_mapping)
+FileNotFoundError: [Errno 2] No such file or directory: '/multiview/3d-count/obj_detection/json_kitti_mapping.json'

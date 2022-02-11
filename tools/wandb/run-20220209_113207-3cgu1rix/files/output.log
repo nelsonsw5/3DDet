@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/wandb/sdk/wandb_run.py", line 1788, in _atexit_cleanup
+    self._on_finish()
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/wandb/sdk/wandb_run.py", line 1936, in _on_finish
+    self._console_stop()  # TODO: there's a race here with jupyter console logging
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/wandb/sdk/wandb_run.py", line 1828, in _console_stop
+    self._restore()
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/wandb/sdk/wandb_run.py", line 1756, in _restore
+    self._out_redir.uninstall()
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/wandb/sdk/lib/redirect.py", line 747, in uninstall
+    self._emulator_write_thread.join(timeout=5)
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/threading.py", line 1015, in join
+    self._wait_for_tstate_lock(timeout=max(timeout, 0))
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/threading.py", line 1027, in _wait_for_tstate_lock
+    elif lock.acquire(block, timeout):
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/wandb/sdk/lib/redirect.py", line 649, in handler
+    self.handle_window_size_change()
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/wandb/sdk/lib/redirect.py", line 680, in handle_window_size_change
+    fcntl.ioctl(fd, termios.TIOCSWINSZ, win_size)
+OSError: [Errno 9] Bad file descriptor
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "test.py", line 236, in <module>
+    main()
+  File "test.py", line 210, in main
+    run.finish()
+  File "/home/stephen/Documents/3DDet/tools/wandb_utils/wandb.py", line 223, in finish
+    wandb.finish()
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/wandb/sdk/wandb_run.py", line 2848, in finish
+    wandb.run.finish(exit_code=exit_code, quiet=quiet)
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/wandb/sdk/wandb_run.py", line 1463, in finish
+    self._atexit_cleanup(exit_code=exit_code)
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/wandb/sdk/wandb_run.py", line 1796, in _atexit_cleanup
+    self._console_stop()
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/wandb/sdk/wandb_run.py", line 1828, in _console_stop
+    self._restore()
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/wandb/sdk/wandb_run.py", line 1758, in _restore
+    self._err_redir.uninstall()
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/wandb/sdk/lib/redirect.py", line 733, in uninstall
+    time.sleep(1)
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/wandb/sdk/lib/redirect.py", line 649, in handler
+    self.handle_window_size_change()
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/wandb/sdk/lib/redirect.py", line 680, in handle_window_size_change
+    fcntl.ioctl(fd, termios.TIOCSWINSZ, win_size)

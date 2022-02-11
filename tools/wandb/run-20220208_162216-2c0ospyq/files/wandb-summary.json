@@ -1,0 +1,1 @@
+{"Point Cloud": {"_type": "object3D-file", "path": "media/object3D/Point Cloud_0_e8a9ff887c1e4832a2f8.pts.json", "sha256": "e8a9ff887c1e4832a2f81b171e72e0ede5d08844c7ca8d9e0b1bc47ecb1b8b95", "size": 141139}, "_runtime": 209, "_timestamp": 1644362745, "_step": 2940, "loss": 1.1080572605133057, "_wandb": {"runtime": 210}}

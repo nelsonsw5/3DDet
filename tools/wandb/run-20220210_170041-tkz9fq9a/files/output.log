@@ -1,0 +1,8 @@
+/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/functional.py:445: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1639180595841/work/aten/src/ATen/native/TensorShape.cpp:2157.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+2022-02-10 17:00:47,434   INFO  ==> Loading parameters from checkpoint /home/stephen/Documents/3DDet/output/kitti_models/pointpillar/default/ckpt/checkpoint_epoch_10.pth to GPU
+==> Checkpoint trained from version: pcdet+0.5.1+f6238b7+pye6a5677
+2022-02-10 17:00:47,502   INFO  ==> Loading optimizer parameters from checkpoint /home/stephen/Documents/3DDet/output/kitti_models/pointpillar/default/ckpt/checkpoint_epoch_10.pth to GPU
+2022-02-10 17:00:47,509   INFO  ==> Done
+2022-02-10 17:00:47,510   INFO  **********************Start training kitti_models/pointpillar(default)**********************
+epochs: 0it [00:00, ?it/s]

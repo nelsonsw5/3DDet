@@ -1,5 +1,5 @@
 from .detector3d_template import Detector3DTemplate
-
+import pdb
 
 class PointPillar(Detector3DTemplate):
     def __init__(self, model_cfg, num_class, dataset):
@@ -7,9 +7,9 @@ class PointPillar(Detector3DTemplate):
         self.module_list = self.build_networks()
 
     def forward(self, batch_dict):
+        #pdb.set_trace()
         for cur_module in self.module_list:
             batch_dict = cur_module(batch_dict)
-
         if self.training:
             loss, tb_dict, disp_dict = self.get_training_loss()
 

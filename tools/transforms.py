@@ -74,6 +74,18 @@ class NegZForward2YForward(object):
 
         return torch.cat(swapped, -1)
 
+class NegZForward2XForward(object):
+    """Inverse of YForward2NegZForward"""
+
+    def __call__(self, verts, invert=True, *args, **kwargs):
+        x, y, z = verts.unbind(-1)
+        if invert:
+            swapped = [x.unsqueeze(-1), -z.unsqueeze(-1), y.unsqueeze(-1)]
+        else:
+            swapped = [x.unsqueeze(-1), z.unsqueeze(-1), y.unsqueeze(-1)]
+
+        return torch.cat(swapped, -1)
+
 class MaxNormalizer(object):
     def __init__(self, max):
         self.max = max

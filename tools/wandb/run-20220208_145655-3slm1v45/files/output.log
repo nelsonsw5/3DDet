@@ -1,0 +1,24 @@
+/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/functional.py:445: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1639180595841/work/aten/src/ATen/native/TensorShape.cpp:2157.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+epochs:   0%|                                                                                                            | 0/2 [00:00<?, ?it/s]
+Traceback (most recent call last):                                                                                     | 0/147 [00:00<?, ?it/s]
+  File "train.py", line 249, in <module>
+    main()
+  File "train.py", line 199, in main
+    train_model(
+  File "/home/stephen/Documents/3DDet/tools/train_utils/train_utils.py", line 116, in train_model
+    accumulated_iter = train_one_epoch(
+  File "/home/stephen/Documents/3DDet/tools/train_utils/train_utils.py", line 50, in train_one_epoch
+    loss, tb_dict, disp_dict = model_func(model, batch, device)
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/__init__.py", line 42, in model_func
+    ret_dict, tb_dict, disp_dict = model(batch_dict)
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/detectors/pointpillar.py", line 11, in forward
+    batch_dict = cur_module(batch_dict)
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/backbones_2d/base_bev_backbone.py", line 106, in forward
+    x = torch.cat(ups, dim=1)
+RuntimeError: Sizes of tensors must match except in dimension 1. Expected size 10 but got size 12 for tensor number 2 in the list.
+**********************Start training kitti_models/pointpillar(default)**********************

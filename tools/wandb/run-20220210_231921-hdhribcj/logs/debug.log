@@ -1,0 +1,18 @@
+2022-02-10 23:19:21,756 INFO    MainThread:645626 [wandb_setup.py:_flush():71] setting env: {}
+2022-02-10 23:19:21,756 INFO    MainThread:645626 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-02-10 23:19:21,756 INFO    MainThread:645626 [wandb_init.py:_log_setup():371] Logging user logs to /home/stephen/Documents/3DDet/tools/wandb/run-20220210_231921-hdhribcj/logs/debug.log
+2022-02-10 23:19:21,756 INFO    MainThread:645626 [wandb_init.py:_log_setup():372] Logging internal logs to /home/stephen/Documents/3DDet/tools/wandb/run-20220210_231921-hdhribcj/logs/debug-internal.log
+2022-02-10 23:19:21,756 INFO    MainThread:645626 [wandb_init.py:init():404] calling init triggers
+2022-02-10 23:19:21,756 INFO    MainThread:645626 [wandb_init.py:init():409] wandb.init called with sweep_config: {}
+config: {}
+2022-02-10 23:19:21,756 INFO    MainThread:645626 [wandb_init.py:init():460] starting backend
+2022-02-10 23:19:21,756 INFO    MainThread:645626 [backend.py:_multiprocessing_setup():99] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2022-02-10 23:19:21,769 INFO    MainThread:645626 [backend.py:ensure_launched():216] starting backend process...
+2022-02-10 23:19:21,779 INFO    MainThread:645626 [backend.py:ensure_launched():221] started backend process with pid: 645828
+2022-02-10 23:19:21,785 INFO    MainThread:645626 [wandb_init.py:init():469] backend started and connected
+2022-02-10 23:19:21,792 INFO    MainThread:645626 [wandb_init.py:init():533] updated telemetry
+2022-02-10 23:19:21,867 INFO    MainThread:645626 [wandb_init.py:init():563] communicating current version
+2022-02-10 23:19:25,466 INFO    MainThread:645626 [wandb_init.py:init():568] got version response upgrade_message: "wandb version 0.12.10 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2022-02-10 23:19:25,466 INFO    MainThread:645626 [wandb_init.py:init():578] communicating run to backend with 30 second timeout
+2022-02-10 23:19:25,608 INFO    MainThread:645626 [wandb_init.py:init():606] starting run threads in backend

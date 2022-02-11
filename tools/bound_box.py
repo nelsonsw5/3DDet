@@ -3,6 +3,15 @@ import pdb
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 import numpy as np
+import os
+import os.path
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+from   matplotlib.path import Path
+from matplotlib import colors
+import numpy as np
+from PIL import Image
+from math import sin, cos
 
 TEST_COORS = [
     [0.4156847596168518, -0.06592566519975662, 0.6647587418556213],
@@ -86,7 +95,7 @@ class BoundBox(object):
 
 
 class ThreeDimBoundBox(object):
-    def __init__(self, centroids=None, dims=None, corners=None):
+    def __init__(self, centroids=None, dims=None, corners=None, label=None):
         """
 
         @param centroids: (array-like) bounding box centroids (1 x 3)
@@ -99,6 +108,7 @@ class ThreeDimBoundBox(object):
         self.centroid=centroids
         self.dims=dims
         self.corners=corners
+        self.label = label
         #pdb.set_trace()
 
     def get_hwd_box(self):
@@ -106,21 +116,13 @@ class ThreeDimBoundBox(object):
         raise NotImplementedError
 
     def get_corners(self):
-        #pdb.set_trace()
         if self.corners:
-            #print("printing corners from corners: ", self.corners)
             return self.corners
         else:
+
             x, y, z = self.centroid
             d, w, h = self.dims
-            # w, d, h = self.dims
-            # h, w, l = self.dims
-            # print("x: ", x)
-            # print("y: ", y)
-            # print("z: ", z)
-            # print("w: ", w)
-            # print("d: ", d)
-            # print("h: ", h)
+
 
             # get plane in x, y
             plane = [
@@ -129,16 +131,68 @@ class ThreeDimBoundBox(object):
                 [x - w / 2, y + d / 2],
                 [x - w / 2, y - d / 2]
             ]
-            #print("plane: ", plane)
             cube = []
             for point in plane:
                 cube.append(
-                    [point[0], point[1], z + h/2]
+                    [point[0], point[1], z + h/2],
                 )
                 cube.append(
-                    [point[0], point[1], z - h/2]
+                    [point[0], point[1], z - h / 2],
                 )
-            #pdb.set_trace()
             self.corners = np.array(cube)
-            #print("printing corners from centroids: ",self.corners)
             return self.corners
+            
+
+
+    def kittiBox3D(self):
+        # '''
+        # takes an object label and a projection matrix (P) and projects the 3D
+        # bounding box into the image plane.
+        
+        # (Adapted from devkit_object/matlab/computeBox3D.m)
+        
+        # Args:
+        #     label -  object label list or array
+        # '''
+        label = self.label
+        label = label.split()
+        w = float(label[7])
+        h = float(label[8])
+        l = float(label[9])
+        x = float(label[10])
+        y = float(label[11])
+        z = float(label[12])
+        ry = float(label[13])
+        
+        # compute rotational matrix around yaw axis
+        R = np.array([ [+cos(ry), 0, +sin(ry)],
+                        [0, 1,               0],
+                        [-sin(ry), 0, +cos(ry)] ] )
+
+        # 3D bounding box corners
+
+        x_corners = [0, l, l, l, l, 0, 0, 0] # -l/2
+        y_corners = [0, 0, h, h, 0, 0, h, h] # -h
+        z_corners = [0, 0, 0, w, w, w, w, 0] # --w/2
+        
+        x_corners += -l/2
+        y_corners += -h
+        z_corners += -w/2
+        
+        
+        # bounding box in object co-ordinate
+        corners_3D = np.array([x_corners, y_corners, z_corners])
+        #print ( 'corners_3d', corners_3D.shape, corners_3D)
+        
+        # rotate 
+        corners_3D = R.dot(corners_3D)
+        #print ( 'corners_3d', corners_3D.shape, corners_3D)
+        
+        #translate 
+        corners_3D += np.array([x, y, z]).reshape((3,1))
+        #print ( 'corners_3d', corners_3D)
+        
+
+        
+        corners_3D_1 = np.vstack((corners_3D,np.ones((corners_3D.shape[-1]))))
+        return corners_3D

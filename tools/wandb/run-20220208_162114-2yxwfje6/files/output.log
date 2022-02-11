@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "train.py", line 238, in <module>
+    main()
+  File "train.py", line 153, in main
+    model = build_network(model_cfg=cfg.MODEL, num_class=len(cfg.CLASS_NAMES), dataset=train_set)
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/__init__.py", line 17, in build_network
+    model = build_detector(
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/detectors/__init__.py", line 27, in build_detector
+    model = __all__[model_cfg.NAME](
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/detectors/pointpillar.py", line 7, in __init__
+    self.module_list = self.build_networks()
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/detectors/detector3d_template.py", line 46, in build_networks
+    module, model_info_dict = getattr(self, 'build_%s' % module_name)(
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/detectors/detector3d_template.py", line 128, in build_dense_head
+    dense_head_module = dense_heads.__all__[self.model_cfg.DENSE_HEAD.NAME](
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/dense_heads/anchor_head_single.py", line 10, in __init__
+    super().__init__(
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/dense_heads/anchor_head_template.py", line 28, in __init__
+    anchors, self.num_anchors_per_location = self.generate_anchors(
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/dense_heads/anchor_head_template.py", line 45, in generate_anchors
+    anchors_list, num_anchors_per_location_list = anchor_generator.generate_anchors(feature_map_size)
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/dense_heads/target_assigner/anchor_generator.py", line 45, in generate_anchors
+    anchor_size = x_shifts.new_tensor(anchor_size)
+TypeError: must be real number, not str

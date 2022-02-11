@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "kitti_viz_test.py", line 27, in <module>
+    boxes = bbobj.computeBox3D()
+  File "/home/stephen/Documents/3DDet/tools/bound_box.py", line 131, in computeBox3D
+    label = label.split()
+AttributeError: 'NoneType' object has no attribute 'split'

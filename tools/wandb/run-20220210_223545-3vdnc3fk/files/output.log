@@ -1,0 +1,42 @@
+/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/functional.py:445: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1639180595841/work/aten/src/ATen/native/TensorShape.cpp:2157.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+2022-02-10 22:35:52,556   INFO  **********************Start training kitti_models/second(default)**********************
+epochs:   0%|                                                                                                                                                                                      | 0/2 [00:00<?, ?it/s]
+epochs:   0%|                                                                                                                                                                                      | 0/2 [00:00<?, ?it/s][Exception|implicit_gemm_pair]indices=torch.Size([29, 4]),bs=1,ss=[1, 10, 10],algo=ConvAlgo.MaskImplicitGemm,ksize=[3, 3, 3],stride=[2, 2, 2],padding=[0, 1, 1],dilation=[1, 1, 1],subm=False,transpose=False
+epochs:   0%|                                                                                                                                                                                      | 0/2 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "train.py", line 238, in <module>
+    main()
+  File "train.py", line 191, in main
+    train_model(
+  File "/home/stephen/Documents/3DDet/tools/train_utils/train_utils.py", line 116, in train_model
+    accumulated_iter = train_one_epoch(
+  File "/home/stephen/Documents/3DDet/tools/train_utils/train_utils.py", line 50, in train_one_epoch
+    loss, tb_dict, disp_dict = model_func(model, batch)
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/__init__.py", line 42, in model_func
+    ret_dict, tb_dict, disp_dict = model(batch_dict)
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/detectors/second_net.py", line 13, in forward
+    batch_dict = cur_module(batch_dict)
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/backbones_3d/spconv_backbone.py", line 153, in forward
+    x_conv4 = self.conv4(x_conv3)
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/spconv/pytorch/modules.py", line 137, in forward
+    input = module(input)
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/spconv/pytorch/modules.py", line 137, in forward
+    input = module(input)
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/spconv/pytorch/conv.py", line 404, in forward
+    raise e
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/spconv/pytorch/conv.py", line 381, in forward
+    res = ops.get_indice_pairs_implicit_gemm(
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/spconv/pytorch/ops.py", line 280, in get_indice_pairs_implicit_gemm
+    raise ValueError(
+ValueError: your out spatial shape [0, 5, 5] reach zero!!! input shape: [1, 10, 10]

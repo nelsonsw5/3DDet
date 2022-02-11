@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "kitti_viz_test.py", line 27, in <module>
+    boxes = bbobj.computeBox3D()
+TypeError: computeBox3D() takes 0 positional arguments but 1 was given

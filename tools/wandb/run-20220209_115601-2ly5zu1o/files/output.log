@@ -1,0 +1,30 @@
+/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/functional.py:445: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1639180595841/work/aten/src/ATen/native/TensorShape.cpp:2157.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+2022-02-09 11:56:07,002   INFO  **********************Start training kitti_models/pointpillar(default)**********************
+epochs:   0%|                                                                                                                                                                                                                                       | 0/10 [00:01<?, ?it/s]
+Traceback (most recent call last):                                                                                                                                                                                                                 | 0/147 [00:00<?, ?it/s]
+  File "train.py", line 238, in <module>
+    main()
+  File "train.py", line 191, in main
+    train_model(
+  File "/home/stephen/Documents/3DDet/tools/train_utils/train_utils.py", line 116, in train_model
+    accumulated_iter = train_one_epoch(
+  File "/home/stephen/Documents/3DDet/tools/train_utils/train_utils.py", line 50, in train_one_epoch
+    loss, tb_dict, disp_dict = model_func(model, batch)
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/__init__.py", line 42, in model_func
+    ret_dict, tb_dict, disp_dict = model(batch_dict)
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/detectors/pointpillar.py", line 14, in forward
+    loss, tb_dict, disp_dict = self.get_training_loss()
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/detectors/pointpillar.py", line 27, in get_training_loss
+    loss_rpn, tb_dict = self.dense_head.get_loss()
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/dense_heads/anchor_head_template.py", line 218, in get_loss
+    cls_loss, tb_dict = self.get_cls_layer_loss()
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/dense_heads/anchor_head_template.py", line 129, in get_cls_layer_loss
+    cls_loss_src = self.cls_loss_func(cls_preds, one_hot_targets, weights=cls_weights)  # [N, M]
+  File "/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/utils/loss_utils.py", line 59, in forward
+    pt = target * (1.0 - pred_sigmoid) + (1.0 - target) * pred_sigmoid
+RuntimeError: The size of tensor a (12800) must match the size of tensor b (3200) at non-singleton dimension 1

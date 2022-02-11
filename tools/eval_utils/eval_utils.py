@@ -55,6 +55,7 @@ def eval_one_epoch(cfg, model, dataloader, epoch_id, logger, dist_test=False, sa
     for i, batch_dict in enumerate(dataloader):
         load_data_to_gpu(batch_dict)
         with torch.no_grad():
+            # pdb.set_trace()
             pred_dicts, ret_dict = model(batch_dict)
         disp_dict = {}
 
@@ -112,7 +113,7 @@ def eval_one_epoch(cfg, model, dataloader, epoch_id, logger, dist_test=False, sa
     labels = []
     centroids = []
     dims = []
-    id = '000008'
+    id = '299fa980-f6aa-419f-a996-f7601b45e2bc-0'
     # pdb.set_trace()
     for scene in x:
         if scene['frame_id'] == id:

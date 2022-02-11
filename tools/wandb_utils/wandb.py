@@ -239,6 +239,7 @@ class WandB:
             centroids = centroids.data.numpy()
         if isinstance(dims, torch.Tensor):
             dims = dims.data.numpy()
+        # print(dims)
 
         boxes = []
         for i, c in enumerate(centroids):

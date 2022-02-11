@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 import torch.nn as nn
+import pdb
 
 
 class BaseBEVBackbone(nn.Module):
@@ -89,6 +90,7 @@ class BaseBEVBackbone(nn.Module):
         ups = []
         ret_dict = {}
         x = spatial_features
+        # pdb.set_trace()
         for i in range(len(self.blocks)):
             x = self.blocks[i](x)
 
@@ -100,6 +102,7 @@ class BaseBEVBackbone(nn.Module):
                 ups.append(x)
 
         if len(ups) > 1:
+            #pdb.set_trace()
             x = torch.cat(ups, dim=1)
         elif len(ups) == 1:
             x = ups[0]

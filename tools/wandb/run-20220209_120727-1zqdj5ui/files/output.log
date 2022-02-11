@@ -1,0 +1,49 @@
+/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/functional.py:445: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1639180595841/work/aten/src/ATen/native/TensorShape.cpp:2157.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+2022-02-09 12:07:32,715   INFO  **********************Start training kitti_models/pointpillar(default)**********************
+epochs:   0%|                                                                                                                                                      | 0/10 [00:01<?, ?it/s, loss=3.71, lr=0.000302, d_time=0.00(0.00), f_time=0.05(0.08), b_time=0.07(0.10)]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+epochs:  40%|█████████████████████████████████████████████████████████▏                                                                                     | 4/10 [00:37<00:53,  8.84s/it, loss=1.75, lr=0.00299, d_time=0.00(0.00), f_time=0.02(0.03), b_time=0.05(0.06)]
+
+
+
+
+
+
+
+
+epochs:  60%|█████████████████████████████████████████████████████████████████████████████████████▊                                                         | 6/10 [00:55<00:35,  8.92s/it, loss=2.17, lr=0.00212, d_time=0.00(0.00), f_time=0.02(0.03), b_time=0.04(0.06)]
+
+
+
+
+
+
+
+
+
+
+
+
+epochs:  90%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉              | 9/10 [01:22<00:08,  8.79s/it, loss=0.939, lr=0.000128, d_time=0.00(0.00), f_time=0.02(0.03), b_time=0.05(0.06)]
+
+
+
+
+epochs: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [01:29<00:00,  8.92s/it, loss=1.06, lr=3.95e-8, d_time=0.00(0.00), f_time=0.01(0.03), b_time=0.03(0.06)]

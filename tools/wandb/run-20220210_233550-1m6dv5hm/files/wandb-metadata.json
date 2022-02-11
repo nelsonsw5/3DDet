@@ -1,0 +1,27 @@
+{
+    "os": "Linux-5.13.0-28-generic-x86_64-with-glibc2.17",
+    "python": "3.8.12",
+    "heartbeatAt": "2022-02-11T06:35:51.442388",
+    "startedAt": "2022-02-11T06:35:50.366167",
+    "docker": null,
+    "gpu": "NVIDIA GeForce RTX 3070",
+    "gpu_count": 4,
+    "cpu_count": 24,
+    "cuda": null,
+    "args": [
+        "--cfg_file",
+        "cfgs/kitti_models/second.yaml"
+    ],
+    "state": "running",
+    "program": "train.py",
+    "codePath": "tools/train.py",
+    "git": {
+        "remote": "https://github.com/nelsonsw5/3DDet.git",
+        "commit": "e6a5677cf3921740354c1c24b54b63579538df33"
+    },
+    "email": "stephenwnelson5@gmail.com",
+    "root": "/home/stephen/Documents/3DDet",
+    "host": "ava",
+    "username": "stephen",
+    "executable": "/home/stephen/anaconda3/envs/kitti/bin/python"
+}

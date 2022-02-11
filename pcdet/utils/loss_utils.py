@@ -81,7 +81,7 @@ class WeightedSmoothL1Loss(nn.Module):
                   | abs(x) - 0.5 * beta   otherwise,
     where x = input - target.
     """
-    def __init__(self, beta: float = 1.0 / 9.0, code_weights: list = None):
+    def __init__(self, beta: float = 1.0 / 9.0, code_weights: list = None, device='cuda'):
         """
         Args:
             beta: Scalar float.

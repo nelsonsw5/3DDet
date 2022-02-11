@@ -10,12 +10,13 @@ def viz(centroids, dims, labels, id):
     # pdb.set_trace()
     centroids = torch.tensor(centroids)
     dims = torch.tensor(dims)
-    json_mapping = '/multiview/3d-count/obj_detection/json_kitti_mapping.json'
+    json_mapping = '/multiview/3d-count/obj_detection/scripts/json_kitti_mapping.json'
+    # pdb.set_trace()
     f = open(json_mapping)
     json_map = json.load(f)
     f.close()
-    obj_path = json_map[str(int(id))]['53k_point_cloud_path']
-    #pdb.set_trace()
+    obj_path = json_map[id]['24k_frustum_point_cloud_path']
+    # print("obj_ path: ", obj_path)
     pc, _, _ = load_obj(obj_path)
 
     run = WandB(

@@ -376,8 +376,10 @@ class KittiDataset(DatasetTemplate):
             index = index % len(self.kitti_infos)
         #print("printing in kitti_dataset.py, index: ", index)
         info = copy.deepcopy(self.kitti_infos[index])
-        #print("info: ", info)
+        # print("info: ", info)
+        # pdb.set_trace()
         sample_idx = info['point_cloud']['lidar_idx']
+        # print("sample_idx up top: ", sample_idx)
         img_shape = info['image']['image_shape']
         calib = self.get_calib(sample_idx)
         get_item_list = self.dataset_cfg.get('GET_ITEM_LIST', ['points'])
@@ -407,6 +409,7 @@ class KittiDataset(DatasetTemplate):
                 input_dict['road_plane'] = road_plane
 
         if "points" in get_item_list:
+            # print("sample_idx in points: ", sample_idx)
             points = self.get_lidar(sample_idx)
             if self.dataset_cfg.FOV_POINTS_ONLY:
                 pts_rect = calib.lidar_to_rect(points[:, 0:3])

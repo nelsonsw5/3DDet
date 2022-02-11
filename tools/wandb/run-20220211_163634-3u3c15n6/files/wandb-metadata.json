@@ -1,0 +1,34 @@
+{
+    "os": "Linux-5.13.0-28-generic-x86_64-with-glibc2.17",
+    "python": "3.8.12",
+    "heartbeatAt": "2022-02-11T23:36:34.992537",
+    "startedAt": "2022-02-11T23:36:34.107822",
+    "docker": null,
+    "gpu": "NVIDIA GeForce RTX 3070",
+    "gpu_count": 4,
+    "cpu_count": 24,
+    "cuda": null,
+    "args": [
+        "--ip=127.0.0.1",
+        "--stdin=9027",
+        "--control=9025",
+        "--hb=9024",
+        "--Session.signature_scheme=\"hmac-sha256\"",
+        "--Session.key=b\"41245fe1-96f7-415e-a4db-cd3c711c99f3\"",
+        "--shell=9026",
+        "--transport=\"tcp\"",
+        "--iopub=9028",
+        "--f=/tmp/tmp-670412N6lSmlMjV5Vt.json"
+    ],
+    "state": "running",
+    "program": "<python with no main file>",
+    "git": {
+        "remote": "https://github.com/nelsonsw5/3DDet.git",
+        "commit": "e6a5677cf3921740354c1c24b54b63579538df33"
+    },
+    "email": "stephenwnelson5@gmail.com",
+    "root": "/home/stephen/Documents/3DDet",
+    "host": "ava",
+    "username": "stephen",
+    "executable": "/home/stephen/anaconda3/envs/kitti/bin/python"
+}

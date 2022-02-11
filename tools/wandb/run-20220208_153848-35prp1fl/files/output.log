@@ -1,0 +1,20 @@
+/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/functional.py:445: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1639180595841/work/aten/src/ATen/native/TensorShape.cpp:2157.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+epochs:   0%|                                                                                                                                                                                                           | 0/2 [00:00<?, ?it/s]
+train:   0%|                                                                                                                                                                                                          | 0/586 [00:00<?, ?it/s]
+**********************Start training kitti_models/pointpillar(default)**********************
+> /home/stephen/Documents/3DDet/pcdet/models/detectors/pointpillar.py(11)forward()
+-> for cur_module in self.module_list:
+
+
+train:   0%|▎                                                                                                                                                                                     | 1/586 [00:04<41:56,  4.30s/it, total_it=1]
+> /home/stephen/Documents/3DDet/pcdet/models/detectors/pointpillar.py(11)forward()
+-> for cur_module in self.module_list:
+
+(Pdb) continue
+> /home/stephen/Documents/3DDet/pcdet/models/detectors/pointpillar.py(11)forward()
+-> for cur_module in self.module_list:
+
+
+(Pdb) nano /home/stephen/Documents/3DDet/pcdet/models/detectors/pointpillar.py
+*** SyntaxError: invalid syntax

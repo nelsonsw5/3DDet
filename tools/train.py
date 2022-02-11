@@ -46,6 +46,7 @@ def parse_config():
     parser.add_argument('--max_waiting_mins', type=int, default=0, help='max waiting minutes')
     parser.add_argument('--start_epoch', type=int, default=0, help='')
     parser.add_argument('--save_to_file', action='store_true', default=False, help='')
+    parser.add_argument('--cuda', type=str, default=None, help='')
 
     args = parser.parse_args()
 
@@ -79,6 +80,8 @@ def main():
 
     args.epochs = cfg.OPTIMIZATION.NUM_EPOCHS if args.epochs is None else args.epochs
 
+
+
     if args.fix_random_seed:
         common_utils.set_random_seed(666)
 
@@ -106,6 +109,7 @@ def main():
     tb_log = SummaryWriter(log_dir=str(output_dir / 'tensorboard')) if cfg.LOCAL_RANK == 0 else None
 
     # -----------------------create dataloader & network & optimizer---------------------------
+
     train_set, train_loader, train_sampler = build_dataloader(
         dataset_cfg=cfg.DATA_CONFIG,
         class_names=cfg.CLASS_NAMES,
@@ -116,30 +120,35 @@ def main():
         merge_all_iters_to_one_epoch=args.merge_all_iters_to_one_epoch,
         total_epochs=args.epochs
     )
+
     for i, batch in enumerate(train_loader):
         if i == 0:
             id = batch['frame_id']
             break
+
     id = id[0]
     # id = '028440'
     run = WandB(
-        project='objdet_GT_Viz',
+        project='3DDet_Viz',
         enabled=True,
         log_objects=True,
-        name='GT Train Viz - DL: ' + id
+        name='GT first itr'
     )
     viz(train_set, id, run)
+    # run.finish()
+    
 
-    #### Vizualize Ground Truth from Multiview
+    ### Vizualize Ground Truth from Multiview
     # run1 = WandB(
     #     project='objdet_GT_Viz',
     #     enabled=True,
     #     log_objects=True,
     #     name='GT Train Viz - Multiview: ' + id
     # )
-    #
+    
     # viz_multiview(id, run1)
     # run1.finish()
+
 
     model = build_network(model_cfg=cfg.MODEL, num_class=len(cfg.CLASS_NAMES), dataset=train_set)
     if args.sync_bn:
@@ -166,9 +175,9 @@ def main():
             )
             last_epoch = start_epoch + 1
     model.train()  # before wrap to DistributedDataParallel to support fixed some parameters
-    if dist_train:
-        model = nn.parallel.DistributedDataParallel(model, device_ids=[cfg.LOCAL_RANK % torch.cuda.device_count()])
-    logger.info(model)
+    # if dist_train:
+    #     model = nn.parallel.DistributedDataParallel(model, device_ids=[cfg.LOCAL_RANK % torch.cuda.device_count()])
+    # logger.info(model)
 
     lr_scheduler, lr_warmup_scheduler = build_scheduler(
         optimizer, total_iters_each_epoch=len(train_loader), total_epochs=args.epochs,
@@ -178,6 +187,7 @@ def main():
     # -----------------------start training---------------------------
     logger.info('**********************Start training %s/%s(%s)**********************'
                 % (cfg.EXP_GROUP_PATH, cfg.TAG, args.extra_tag))
+
     train_model(
         model,
         optimizer,
@@ -200,28 +210,28 @@ def main():
     run.finish()
     if hasattr(train_set, 'use_shared_memory') and train_set.use_shared_memory:
         train_set.clean_shared_memory()
+
     logger.info('**********************End training %s/%s(%s)**********************\n\n\n'
                 % (cfg.EXP_GROUP_PATH, cfg.TAG, args.extra_tag))
-    logger.info('**********************Start evaluation %s/%s(%s)**********************' %
-               (cfg.EXP_GROUP_PATH, cfg.TAG, args.extra_tag))
-    test_set, test_loader, sampler = build_dataloader(
-       dataset_cfg=cfg.DATA_CONFIG,
-       class_names=cfg.CLASS_NAMES,
-       batch_size=args.batch_size,
-       dist=dist_train, workers=args.workers, logger=logger, training=False
-    )
 
-    eval_output_dir = output_dir / 'eval' / 'eval_with_train'
-    eval_output_dir.mkdir(parents=True, exist_ok=True)
-    args.start_epoch = max(args.epochs - 0, 0)  # Only evaluate the last 10 epochs
+#     test_set, test_loader, sampler = build_dataloader(
+#        dataset_cfg=cfg.DATA_CONFIG,
+#        class_names=cfg.CLASS_NAMES,
+#        batch_size=args.batch_size,
+#        dist=dist_train, workers=args.workers, logger=logger, training=False
+#     )
 
-    repeat_eval_ckpt(
-       model.module if dist_train else model,
-       test_loader, args, eval_output_dir, logger, ckpt_dir,
-       dist_test=dist_train
-   )
-    logger.info('**********************End evaluation %s/%s(%s)**********************' %
-               (cfg.EXP_GROUP_PATH, cfg.TAG, args.extra_tag))
+#     eval_output_dir = output_dir / 'eval' / 'eval_with_train'
+#     eval_output_dir.mkdir(parents=True, exist_ok=True)
+#     args.start_epoch = max(args.epochs - 0, 0)  # Only evaluate the last 10 epochs
+
+#     repeat_eval_ckpt(
+#        model.module if dist_train else model,
+#        test_loader, args, eval_output_dir, logger, ckpt_dir,
+#        dist_test=dist_train
+#    )
+#     print('**********************End evaluation %s/%s(%s)**********************' %
+#                (cfg.EXP_GROUP_PATH, cfg.TAG, args.extra_tag))
 
 
 if __name__ == '__main__':

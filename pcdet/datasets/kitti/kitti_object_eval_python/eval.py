@@ -647,9 +647,8 @@ def get_official_eval_result(gt_annos, dt_annos, current_classes, PR_detail_dict
     class_to_name = {
         0: '16ozcan',
         1: '2Oozbottle',
-        2: 'twelvepack',
-        3: 'twoliter',
-        4: 'sixpack'
+        2: '16ozIsotonicbottle',
+        3: '12ozSlimcan'
     }
     name_to_class = {v: n for n, v in class_to_name.items()}
     if not isinstance(current_classes, (list, tuple)):

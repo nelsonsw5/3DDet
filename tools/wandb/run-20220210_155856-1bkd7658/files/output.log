@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "kitti_viz_test.py", line 26, in <module>
+    bbobj = TDBB(data)
+NameError: name 'TDBB' is not defined

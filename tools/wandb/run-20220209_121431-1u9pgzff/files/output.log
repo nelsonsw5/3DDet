@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "test.py", line 236, in <module>
+    main()
+  File "test.py", line 219, in main
+    viz_multiview(id, run1)
+  File "/home/stephen/Documents/3DDet/tools/vizualize_first_batch.py", line 36, in viz_multiview
+    label_path = json_map[str(int(id))]["24k_frustum_label"]
+KeyError: '401'
+Traceback (most recent call last):
+  File "test.py", line 236, in <module>
+    main()
+  File "test.py", line 219, in main
+    viz_multiview(id, run1)
+  File "/home/stephen/Documents/3DDet/tools/vizualize_first_batch.py", line 36, in viz_multiview
+    label_path = json_map[str(int(id))]["24k_frustum_label"]
+KeyError: '401'

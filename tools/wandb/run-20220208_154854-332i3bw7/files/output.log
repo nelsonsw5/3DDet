@@ -1,0 +1,10 @@
+/home/stephen/anaconda3/envs/kitti/lib/python3.8/site-packages/torch/functional.py:445: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1639180595841/work/aten/src/ATen/native/TensorShape.cpp:2157.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Traceback (most recent call last):
+  File "train.py", line 249, in <module>
+    main()
+  File "train.py", line 180, in main
+    it, start_epoch = model.load_params_with_optimizer(
+  File "/home/stephen/Documents/3DDet/tools/../pcdet/models/detectors/detector3d_template.py", line 386, in load_params_with_optimizer
+    logger.info('==> Loading parameters from checkpoint %s to %s' % (filename, 'CPU' if to_cpu else 'GPU'))
+AttributeError: 'NoneType' object has no attribute 'info'
